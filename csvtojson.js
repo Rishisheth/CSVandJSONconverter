@@ -34,7 +34,7 @@ function CSVtoJSON(csv){
     return result;
   }
 
-const csv = fs.readFileSync('ford_escort.csv');
+const csv = fs.readFileSync('csv_file_name.csv');
 var stringData=csv.toString();
 const data = CSVtoJSON(stringData);
-fs.writeFileSync("test.json", data);
+fs.writeFileSync("json_file_name.json", data);
