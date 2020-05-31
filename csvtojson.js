@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require("path");
 
-function CSVtoJSON(csv){
+function CSVtoJSON(csv, header){
 
     var lines=csv.split("\n");
     var length = 0;
@@ -10,9 +10,14 @@ function CSVtoJSON(csv){
             length++;
         }
     }
-    lines[0] = lines[0].replace(/ /g,'');
     var result = [];
-    var headers=lines[0].split(",");
+    if (header === true) {
+        lines[0] = lines[0].replace(/ /g,'');
+        var headers=lines[0].split(",");
+    } else {
+        var blank = ", ,  ,   ,    ,     ,      ,       ,        ,         ";
+        var headers = blank.split(",");
+    }
     for(var i=1;i<length;i++){
   
         var obj = {};
@@ -30,5 +35,6 @@ function CSVtoJSON(csv){
 
 const csv = fs.readFileSync('csv_file_name.csv');
 var stringData=csv.toString();
-const data = CSVtoJSON(stringData);
+var header = false;
+const data = CSVtoJSON(stringData, header);
 fs.writeFileSync("json_file_name.json", data);
