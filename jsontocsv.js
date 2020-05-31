@@ -1,53 +1,36 @@
-
 const fs = require('fs');
 const path = require("path");
 
 function JSONtoCSV(json){
-
-    var lines=json.split("\n");
-    var length = 0;
-    for (let y = 0; y < lines.length; y++) {
-        lines[y].replace(/ /g,"");
-        if (lines[y].length > 0) {
-            length++;
+    var header = '';
+    var values = '';
+    var done = false;
+    var total_categories;
+    JSON.parse(json, (key, value) => {
+        if (key == 0) {
+            done = true;
         }
-    }
-    var result = '';
-    var i = 2;
-    var counter = 0;
-
-    // This loop creates the top headers by checking first few rows that are not just { //
-
-    while (lines[i].length > 8) {
-        var header = lines[i].split(":");
-        header[0].trim;
-        result = result + header[0];
-        if (lines[i+1].length > 8) {
-            result = result + ",";
+        if (done == false) {
+            header = header + key + ', ';
+            total_categories++;
+        }
+    });
+    header = header.substring(0, header.length - 2);
+    header += '\n'; 
+    JSON.parse(json, (key, value) => {
+        if (value.length >= 1) {
+            values = values + value + ', ' ;
         } else {
-            result = result + "\n";
+            values = values.substring(0, values.length - 2);
+            values += '\n';
         }
-        i++;
-        counter++;
+    });
+    values = header + values;
+    if(values.lastIndexOf("\n")>0) {
+        return values.substring(0, values.lastIndexOf("\n"));
+    } else {
+        return values;
     }
-    i = 0;
-    var limit = length - 2;
-
-    // This function iterates through and splits each row storing the second value in the results text //
-
-    while (i < (limit)) {
-        i = i + 2;
-        for(var j=0;j<counter;j++){
-            var currentline = lines[i].split(":");
-            result = result + currentline[1];
-            if (((j + 1) == counter) && ((i + 1) < (limit))) {
-                result = result + "\n";
-            }
-            i++;
-        }
-    }
-    result = result.replace(/ /g,'');
-    return result;
   }
   
 const json = fs.readFileSync('json_file_name.json');
