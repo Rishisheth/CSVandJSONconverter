@@ -1,40 +1,40 @@
+"Index", "Mass (kg)", "Spring 1 (m)", "Spring 2 (m)"
 const fs = require('fs');
 const path = require("path");
 
-function CSVtoJSON(csv, header){
-
-    var lines=csv.split("\n");
-    var length = 0;
-    for (let y = 0; y < lines.length; y++) {
-        if (lines[y].length > 0) {
-            length++;
+function JSONtoCSV(json){
+    var header = '';
+    var values = '';
+    var done = false;
+    var total_categories;
+    JSON.parse(json, (key, value) => {
+        if (key == 0) {
+            done = true;
         }
-    }
-    var result = [];
-    if (header === true) {
-        lines[0] = lines[0].replace(/ /g,'');
-        var headers=lines[0].split(",");
+        if (done == false) {
+            header = header + key + ', ';
+            total_categories++;
+        }
+    });
+    header = header.substring(0, header.length - 2);
+    header += '\n'; 
+    JSON.parse(json, (key, value) => {
+        if (value.length >= 1) {
+            values = values + value + ', ' ;
+        } else {
+            values = values.substring(0, values.length - 2);
+            values += '\n';
+        }
+    });
+    values = header + values;
+    if(values.lastIndexOf("\n")>0) {
+        return values.substring(0, values.lastIndexOf("\n"));
     } else {
-        var blank = ", ,  ,   ,    ,     ,      ,       ,        ,         ";
-        var headers = blank.split(",");
+        return values;
     }
-    for(var i=1;i<length;i++){
-  
-        var obj = {};
-        var currentline=lines[i].split(",");
-        for(var j=0;j<currentline.length;j++){
-            const item = currentline[j].trim();
-            obj[headers[j]] = item;
-        }
-        result.push(obj);
-  
-    }
-    result = JSON.stringify(result, null, 4);
-    return result;
   }
-
-const csv = fs.readFileSync('csv_file_name.csv');
-var stringData=csv.toString();
-var header = false;
-const data = CSVtoJSON(stringData, header);
-fs.writeFileSync("json_file_name.json", data);
+  
+const json = fs.readFileSync('json_file_name.json');
+var stringData=json.toString();
+const data = JSONtoCSV(stringData);
+fs.writeFileSync("csv_file_name.csv", data);
