@@ -14,7 +14,7 @@ function JSONtoCSV(json){
             header = header + key + ', ';
             total_categories++;
         }
-    });
+    }); 
     header = header.substring(0, header.length - 2);
     header += '\n'; 
     JSON.parse(json, (key, value) => {
