@@ -72,6 +72,9 @@ function JSONtoCSV(json_file_name, csv_file_name){
     }
 }
 
+module.exports.JSONtoCSV = JSONtoCSV;
+module.exports.CSVtoJSON = CSVtoJSON;
+
 var first = process.argv[2];
 var second = process.argv[3];
 var header = process.argv[4];
