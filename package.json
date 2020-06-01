@@ -1,0 +1,22 @@
+{
+  "name": "csvandjsonconverter",
+  "version": "1.0.0",
+  "description": "Converts CSV to JSON or vice versa.",
+  "main": "converter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheth19/CSVandJSONconverter.git"
+  },
+  "keywords": [
+    "CSVandJSONconverter"
+  ],
+  "author": "Rishi Sheth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sheth19/CSVandJSONconverter/issues"
+  },
+  "homepage": "https://github.com/sheth19/CSVandJSONconverter#readme"
+}
