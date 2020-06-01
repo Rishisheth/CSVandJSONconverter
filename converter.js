@@ -33,7 +33,7 @@ function CSVtoJSON(csv_file_name, json_file_name, header){
     }
     result = JSON.stringify(result, null, 4);
     fs.writeFileSync(json_file_name, result);
-    return;
+    return result;
   }
 
 function JSONtoCSV(json_file_name, csv_file_name){
@@ -65,10 +65,10 @@ function JSONtoCSV(json_file_name, csv_file_name){
     values = header + values;
     if(values.lastIndexOf("\n")>0) {
         fs.writeFileSync(csv_file_name, values.substring(0, values.lastIndexOf("\n")));
-        return;
+        return values.substring(0, values.lastIndexOf("\n"));
     } else {
         fs.writeFileSync(csv_file_name, values);
-        return;
+        return values;
     }
 }
 
