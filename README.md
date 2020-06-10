@@ -1,16 +1,15 @@
 # CSVandJSONconverter
-Can convert CSV and JSON files back and forth.
+Converts CSV and JSON files back and forth.
 
 Use "convert" and then type the two files you would like to convert.
 If you have a csv file with no header type :false" after both files.
 
-Examples:
-If the package is installed:
+CLI:
 
-Convert file.csv file.json
+convert first.json second.csv
+convert first.csv second.json
 
-If it is not installed:
+Include "false" for csvs with no headers:
 
-npx onvert file.json file.csv
+convert first.csv second.json false
 
-npx convert file.csv file.json false
