@@ -2,13 +2,12 @@
   "name": "csvandjsonconverter",
   "version": "1.0.0",
   "description": "Converts CSV to JSON or vice versa.",
-  "main": "converter.js",
+  "main": "index.js",
   "bin": {
-    "convert": "./converter.js"
+    "convert": "./index.js"
   },
   "scripts": {
-    "test": "mocha",
-    "convert": "node converter.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -23,6 +22,6 @@
     "url": "https://github.com/sheth19/CSVandJSONconverter/issues"
   },
   "homepage": "https://github.com/sheth19/CSVandJSONconverter#readme",
-  "devDependencies": {
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }
