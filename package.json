@@ -22,10 +22,6 @@
     "url": "https://github.com/sheth19/CSVandJSONconverter/issues"
   },
   "homepage": "https://github.com/sheth19/CSVandJSONconverter#readme",
-<<<<<<< HEAD
   "devDependencies": {},
   "dependencies": {}
-=======
-  "devDependencies": {}
->>>>>>> 0deeb3c20422d09887c71ad8ca0351e487d2dd9b
 }
