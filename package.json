@@ -23,8 +23,8 @@
     "url": "https://github.com/sheth19/CSVandJSONconverter/issues"
   },
   "homepage": "https://github.com/sheth19/CSVandJSONconverter#readme",
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "nyc": "^15.1.0"
-  }
+  },
+  "dependencies": {}
 }
